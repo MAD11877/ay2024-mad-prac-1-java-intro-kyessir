@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Question5
 {
@@ -27,6 +28,31 @@ public class Question5
      */
      
     Scanner in = new Scanner(System.in);
-    
+        ArrayList<Integer> data = new ArrayList<Integer>();
+    ArrayList<Integer> counter = new ArrayList<Integer>();
+    int inputs = in.nextInt();
+
+    for(int i = inputs; i > 0; i--)
+    {
+      int number = in.nextInt();
+      boolean b = data.contains(number);
+      if (!b) {
+        data.add(number);
+        counter.add(1);
+      } else {
+        int index = data.indexOf(number);
+        counter.set(index, counter.get(index) + 1);
+      }
+    }
+    int highest = 0;
+    int highestd = 0;
+    for(int i = 0; i < data.size(); i++)
+    {
+      if (counter.get(i) > highest) {
+        highest = counter.get(i);
+        highestd = data.get(i);
+      }
+    }
+    System.out.println(highestd);
   }
 }
